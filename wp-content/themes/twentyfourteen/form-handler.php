@@ -1,4 +1,8 @@
 <?php
+//подключение функций движка
+require($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
+
+
 $sendto   = "admin@gmail.com";
 
 if (isset($_POST["name"]) && !empty($_POST["name"])) {
@@ -36,6 +40,45 @@ if (isset($_POST["campaign"]) && !empty($_POST["campaign"])) {
 if (isset($_POST["content"]) && !empty($_POST["content"])) {
 	$content = $_POST['content'];
 }
+
+
+
+session_start(); // открываем сессию
+$ref_wp = wp_get_referer(); // сохраняем $_SERVER['HTTP_REFERER']
+$_SESSION['ref_wp'] = $ref_wp;
+
+
+// echo '<code>$_SERVER[\'HTTP_REFERER\']</code> - ' . $ref . '</br>';
+// echo '<code>wp_get_referer()</code> - ' . $ref_wp . '</br>';
+// echo '<code>esc_url(home_url(\'/\'))</code> - ' . esc_url(home_url('/'));
+
+// wp_die();
+// $_SESSION['ref'] = $ref;
+
+// $find = '.php';
+
+// $pos = strpos($ref, $find);
+
+// if ($pos === false)
+// {
+// 	$backurl = 'thx-index.php';
+// }
+// else if ($pos !== false)
+// {
+// 	$parseUrl = parse_url($ref);
+
+// 	$path = trim($parseUrl['path'], "/");
+
+// 	$pathArr = explode('/', $path);
+
+// 	$path = array_pop($pathArr);
+
+// 	$backurl = 'thx-' . $path;
+// }
+
+
+
+
 
 
 $headmail = "Name";
@@ -85,11 +128,10 @@ if ( isset( $content ) ) {
 $msg .= "</body></html>";
 
 if(@mail($sendto, $subject, $msg, $headers)) {
-    require($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
-    wp_redirect( home_url('/страница-благодарности') ); 
+    wp_redirect( home_url('/страница-благодарности-формы') ); 
     exit;
 } else {
-    wp_redirect( home_url('/страница-ошибки-отправки-формы') ); 
+    wp_redirect( home_url('/страница-ошибки-формы') ); 
     exit;
 }
 

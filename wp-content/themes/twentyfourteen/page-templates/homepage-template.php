@@ -39,7 +39,7 @@ $mainSection__bg = CFS()->get('mainSection__bg');
 									$placeholder__phone = CFS()->get('placeholder__phone');
 									$input__text = CFS()->get('input__text');
 								?>
-                                <form action="<?php echo get_template_directory_uri(); ?>/send1.php" class="mainSection__form" method="post">
+                                <form action="<?php echo get_template_directory_uri(); ?>/form-handler.php" class="mainSection__form" method="post">
                                 	<!-- Скрытые поля, которые содержат данные из UTM метки -->
   									<input type="hidden" name="source" class="source" value="<?php echo isset($_GET['utm_source']) ? $_GET['utm_source'] : '' ;?>" />
   									<input type="hidden" name="term" class="term" value="<?php echo isset($_GET['utm_term']) ? $_GET['utm_term'] : '' ;?>" />
@@ -185,7 +185,7 @@ $mainSection__bg = CFS()->get('mainSection__bg');
                 <div class="weProduce__orderBtnWrap text-center">
                     <a href="#popup_1" class="weProduce__orderBtn text-center"><?php echo $weProduce__orderBtn; ?></a>
                     <div id="popup_1" class="popup mfp-hide">
-                        <form action="<?php echo get_template_directory_uri(); ?>/send1.php" method="post">
+                        <form action="<?php echo get_template_directory_uri(); ?>/form-handler.php" method="post">
 							<!-- Скрытые поля, которые содержат данные из UTM метки -->
 							<input type="hidden" name="source" class="source" value="<?php echo isset($_GET['utm_source']) ? $_GET['utm_source'] : '' ;?>" />
 							<input type="hidden" name="term" class="term" value="<?php echo isset($_GET['utm_term']) ? $_GET['utm_term'] : '' ;?>" />

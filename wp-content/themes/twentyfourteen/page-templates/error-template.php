@@ -19,7 +19,7 @@ get_header(); ?>
 	    <div class="row">
 	        <div class="col-xs-12">
 	            <div class="thanks__item">
-	                <h3 class="thanks__title text-center">Спасибо за заявку. Мы свяжемся с Вами в ближайшее время.</h3>
+	                <h3 class="thanks__title text-center">Произошла ошибка. Попробуйте отправить форму ещё раз.</h3>
 	            </div>
 	        </div>
 	    </div>
