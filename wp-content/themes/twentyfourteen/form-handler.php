@@ -2,7 +2,6 @@
 //подключение функций движка
 require($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
 
-
 $sendto   = "admin@gmail.com";
 
 if (isset($_POST["name"]) && !empty($_POST["name"])) {
