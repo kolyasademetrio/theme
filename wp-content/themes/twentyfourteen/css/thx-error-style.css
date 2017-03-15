@@ -1,0 +1,72 @@
+/*==============================================================================================
+================ Стили для страницы благодарности и ошибки отправки формы ======================
+===============================================================================================*/
+
+.thanks {
+	padding: 100px 0 20px;
+}
+
+.thanks__title {
+	text-align: center;
+	margin: 0 0 50px;
+	font-family: "RobotoRegular";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	color: #323131;
+}
+
+.thanks__BtnWrap {
+	text-align: center;
+}
+
+.thanks__orderBtn {
+	height: 40px;
+	line-height: 40px;
+	width: 200px;
+	border: 1px solid #f77232;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-o-border-radius: 2px;
+	border-radius: 2px;
+	background-color: #f77232;
+	display: inline-block;
+
+	font-family: "RobotoRegular";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.thanks__orderBtn:hover {
+	text-decoration: none;
+	color: #fff;
+}
+
+@media ( max-width: 768px ) {
+
+	.thanks {
+		padding: 50px 0 20px;
+	}
+
+	.thanks__title {
+		margin: 0 0 30px;
+		font-size: 25px;
+	}
+
+}
+
+@media ( max-width: 479px ) {
+
+	.thanks__title {
+		margin: 0 0 20px;
+		font-size: 21px;
+	}
+
+}
+
+/*==============================================================================================
+================ Стили для страницы благодарности и ошибки отправки формы End ==================
+===============================================================================================*/
