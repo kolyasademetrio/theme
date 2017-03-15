@@ -2,6 +2,7 @@
 if(session_id() == '') {
 	session_start();// открываем сессию
 	$ref_wp = $_SESSION['ref_wp'];
+	$errors = $_SESSION['errors'];
 }
 /**
  * Template Name: Шаблон страницы благодарности
@@ -20,6 +21,20 @@ get_header(); ?>
 	        <div class="col-xs-12">
 	            <div class="thanks__item">
 	                <h3 class="thanks__title text-center">Произошла ошибка. Попробуйте отправить форму ещё раз.</h3>
+	                <?php
+	                if ( isset($errors) && !empty($errors)) : ?>
+					<div class="thanks__errorMsgWrap">
+					<?php
+						foreach ($errors as $value):
+					?>
+						<p class="thanks__errorMsg text-center"><?php echo $value; ?></p>
+					<?php
+						endforeach;
+					?>
+					</div>
+					<?php
+                	endif;
+                	?>
 	            </div>
 	        </div>
 	    </div>
@@ -46,7 +61,7 @@ get_header(); ?>
 function reload() {
     location = "<?php echo $ref_wp; ?>"
 };
-setTimeout('reload()', 5000);
+// setTimeout('reload()', 5000);
 </script>
 
 
