@@ -14,21 +14,32 @@ $(document).ready(function(){
 			}
 
 			$required.each(function(){
-				// if($(this).attr('name') == 'name')
-				// {
-				// 	if($(this).val().indexOf(' ')) {
-
-				// 	}
-				// }
-
-				if(!$.trim($(this).val())) // tests that each required value does not equal blank, you could put in more stringent checks here if you wish.
+				if(!$.trim( $(this).val() )) // tests that each required value does not equal blank, you could put in more stringent checks here if you wish.
 		        {
 		        	$(this).addClass('borderRed');
 		        	$(this).parent().addClass('posrel');
 		        	$(this).val('');
+		        	var nameAttrVal = $(this).attr('name');
+		        	var placeholderValOutput;
+		        	switch(nameAttrVal)
+		        	{
+		        		case 'name':
+		        			placeholderValOutput = 'Имя';
+		        			break;
 
+		        		case 'phone':
+		        			placeholderValOutput = 'Телефон';
+		        			break;
+
+		        		case 'email':
+		        			placeholderValOutput = 'E-mail';
+		        			break;
+
+		        		default:
+		        			placeholderValOutput = '';
+		        	}
 		        	if(!$(this).next().is('.error')) {
-		        		$(this).after('<div class="error" style="z-index:9999;position:absolute;padding:3px;border:1px solid red;border-radius:2px;top:100%;left:50%;margin-left:-100px;width:200px;color:#000;background-color:#fff;white-space: nowrap;text-align:center;">Заполните поле ' + $(this).attr('placeholder') + '!</div>');
+		        		$(this).after('<div class="error" style="z-index:9999;position:absolute;padding:3px;border:1px solid red;border-radius:2px;top:100%;left:50%;margin-left:-100px;width:200px;color:#000;background-color:#fff;white-space: nowrap;text-align:center;">Заполните поле ' + placeholderValOutput + '!</div>');
 		        	}
 
 		            error = true; // if any inputs fail validation then the error variable will be set to true;
@@ -50,8 +61,10 @@ $(document).ready(function(){
 					if(!$inputEmail.next().is('.error')) {
 						$inputEmail.parent().addClass('posrel');
 		        		$inputEmail.after('<div class="error" style="z-index:9999;position:absolute;padding:3px;border:1px solid red;border-radius:2px;top:100%;left:50%;margin-left:-100px;width:200px;color:#000;background-color:#fff;white-space: nowrap;text-align:center;">Введите корректный E-mail!</div>');
+		        		error = true;
 		        	} else {
 		        		$inputEmail.next('.error').html('Введите корректный E-mail!');
+		        		error = true;
 		        	}
 					$inputEmail.addClass('borderRed');
 				} else {
@@ -74,6 +87,8 @@ $(document).ready(function(){
 			});
 		});
 	})();
+
+	$('form').find('input[name="phone"]').mask("+38(999)999-99-99");
 	/* проверка заполнения полей формы */	
 
 	/*--------------------------------- функция для адаптивного меню -----------------------------*/

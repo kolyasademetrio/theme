@@ -64,8 +64,6 @@ $(window).load(function() {
 
 $(document).ready(function() {
 
-	$('form').find('input[name="phone"]').mask("+38(999)999-99-99");
-
 	$('.weProduce__orderBtn').magnificPopup({
 		type:'inline',
 		removalDelay: 500,
