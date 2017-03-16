@@ -15,12 +15,24 @@ function clean($value = '') {
     return $value;
 }
 
+function checkLength($value = '', $min, $max) {
+	$result = (mb_strlen($value) > $max) || (mb_strlen($value) < $min);
+	return !$result;
+}
+
 if (  isset($_POST['name']) ) { // проверка есть ли в форме input[name="name"] 
 
 	if ( empty($_POST['name']) || trim($_POST['name']) == '' ) { // Проверка пустая или несодержит пробелов $_POST['name']
 		$errors[] = 'Заполните поле Имя.';
 	} else {
-		$username = clean($_POST['name']);
+
+		if ( checkLength($_POST['name'], 1, 20) === false ) {
+			$errors[] = 'Поле Имя должно содержать от 1 до 20 символов.';
+		} else {
+			$username = clean($_POST['name']);
+		}
+
+		
 	}
 
 }
@@ -30,7 +42,13 @@ if (  isset($_POST['phone']) ) { // проверка есть ли в форме
 	if ( empty($_POST['phone']) || trim($_POST['phone']) == '' ) { // Проверка пустая или несодержит пробелов $_POST['phone']
 		$errors[] = 'Заполните поле Телефон.';
 	} else {
-		$userphone = clean($_POST["phone"]);
+
+		if ( !preg_match('/[+][3][8][(][0-9]{3}[)][0-9]{3}[-][0-9]{2}[-][0-9]{2}$/i', $_POST['phone']) ) {
+			$errors[] = 'Введите корректный номер телефона в формате: <b>+38(012)345-67-89</b>.';
+		} else {
+			$userphone = clean($_POST["phone"]);
+		}
+		
 	}
 
 }
@@ -40,7 +58,14 @@ if (  isset($_POST['email']) ) { // проверка есть ли в форме
 	if ( empty($_POST['email']) || trim($_POST['email']) == '' ) { // Проверка пустая или несодержит пробелов $_POST['email']
 		$errors[] = 'Заполните поле E-mail.';
 	} else {
-		$email = clean($_POST['email']);
+
+		if ( filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false ) {
+			$errors[] = 'Введите корректный E-mail.';
+		} else {
+			$email = clean($_POST['email']);
+		}
+		
+		
 	}
 
 }

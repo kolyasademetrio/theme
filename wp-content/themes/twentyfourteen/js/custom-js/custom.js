@@ -1,94 +1,94 @@
 $(document).ready(function(){
 
 	/* проверка заполнения полей формы */
-	(function(){
-		$('form').submit(function(){
-		    var $required = $(this).find('[req]'),
-		    	$inputEmail = $(this).find('input[name="email"]'),
-		        error = false,
-		        pattern;
+	// (function(){
+	// 	$('form').submit(function(){
+	// 	    var $required = $(this).find('[req]'),
+	// 	    	$inputEmail = $(this).find('input[name="email"]'),
+	// 	        error = false,
+	// 	        pattern;
 
-			function isValidEmailAddress(emailAddress) {
-			    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
-			    return pattern.test(emailAddress);
-			}
+	// 		function isValidEmailAddress(emailAddress) {
+	// 		    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+	// 		    return pattern.test(emailAddress);
+	// 		}
 
-			$required.each(function(){
-				if(!$.trim( $(this).val() )) // tests that each required value does not equal blank, you could put in more stringent checks here if you wish.
-		        {
-		        	$(this).addClass('borderRed');
-		        	$(this).parent().addClass('posrel');
-		        	$(this).val('');
-		        	var nameAttrVal = $(this).attr('name');
-		        	var placeholderValOutput;
-		        	switch(nameAttrVal)
-		        	{
-		        		case 'name':
-		        			placeholderValOutput = 'Имя';
-		        			break;
+	// 		$required.each(function(){
+	// 			if(!$.trim( $(this).val() )) // tests that each required value does not equal blank, you could put in more stringent checks here if you wish.
+	// 	        {
+	// 	        	$(this).addClass('borderRed');
+	// 	        	$(this).parent().addClass('posrel');
+	// 	        	$(this).val('');
+	// 	        	var nameAttrVal = $(this).attr('name');
+	// 	        	var placeholderValOutput;
+	// 	        	switch(nameAttrVal)
+	// 	        	{
+	// 	        		case 'name':
+	// 	        			placeholderValOutput = 'Имя';
+	// 	        			break;
 
-		        		case 'phone':
-		        			placeholderValOutput = 'Телефон';
-		        			break;
+	// 	        		case 'phone':
+	// 	        			placeholderValOutput = 'Телефон';
+	// 	        			break;
 
-		        		case 'email':
-		        			placeholderValOutput = 'E-mail';
-		        			break;
+	// 	        		case 'email':
+	// 	        			placeholderValOutput = 'E-mail';
+	// 	        			break;
 
-		        		default:
-		        			placeholderValOutput = '';
-		        	}
-		        	if(!$(this).next().is('.error')) {
-		        		$(this).after('<div class="error" style="z-index:9999;position:absolute;padding:3px;border:1px solid red;border-radius:2px;top:100%;left:50%;margin-left:-100px;width:200px;color:#000;background-color:#fff;white-space: nowrap;text-align:center;">Заполните поле ' + placeholderValOutput + '!</div>');
-		        	}
+	// 	        		default:
+	// 	        			placeholderValOutput = '';
+	// 	        	}
+	// 	        	if(!$(this).next().is('.error')) {
+	// 	        		$(this).after('<div class="error" style="z-index:9999;position:absolute;padding:3px;border:1px solid red;border-radius:2px;top:100%;left:50%;margin-left:-100px;width:200px;color:#000;background-color:#fff;white-space: nowrap;text-align:center;">Заполните поле ' + placeholderValOutput + '!</div>');
+	// 	        	}
 
-		            error = true; // if any inputs fail validation then the error variable will be set to true;
-		        } else {
-		        	$(this).removeClass('borderRed');
-		        	$(this).next('.error').remove();
-		        }
-			});
+	// 	            error = true; // if any inputs fail validation then the error variable will be set to true;
+	// 	        } else {
+	// 	        	$(this).removeClass('borderRed');
+	// 	        	$(this).next('.error').remove();
+	// 	        }
+	// 		});
 
-		    $required.each(function(){
-				if(!$(this).val()) // tests that each required value does not equal blank, you could put in more stringent checks here if you wish.
-		        {
-		            return false;
-		        }
-			});
+	// 	    $required.each(function(){
+	// 			if(!$(this).val()) // tests that each required value does not equal blank, you could put in more stringent checks here if you wish.
+	// 	        {
+	// 	            return false;
+	// 	        }
+	// 		});
 
-			if ($inputEmail.val()) {
-				if( !isValidEmailAddress( $inputEmail.val() ) ) {
-					if(!$inputEmail.next().is('.error')) {
-						$inputEmail.parent().addClass('posrel');
-		        		$inputEmail.after('<div class="error" style="z-index:9999;position:absolute;padding:3px;border:1px solid red;border-radius:2px;top:100%;left:50%;margin-left:-100px;width:200px;color:#000;background-color:#fff;white-space: nowrap;text-align:center;">Введите корректный E-mail!</div>');
-		        		error = true;
-		        	} else {
-		        		$inputEmail.next('.error').html('Введите корректный E-mail!');
-		        		error = true;
-		        	}
-					$inputEmail.addClass('borderRed');
-				} else {
-					$inputEmail.removeClass('borderRed');
-				}
-			}
+	// 		if ($inputEmail.val()) {
+	// 			if( !isValidEmailAddress( $inputEmail.val() ) ) {
+	// 				if(!$inputEmail.next().is('.error')) {
+	// 					$inputEmail.parent().addClass('posrel');
+	// 	        		$inputEmail.after('<div class="error" style="z-index:9999;position:absolute;padding:3px;border:1px solid red;border-radius:2px;top:100%;left:50%;margin-left:-100px;width:200px;color:#000;background-color:#fff;white-space: nowrap;text-align:center;">Введите корректный E-mail!</div>');
+	// 	        		error = true;
+	// 	        	} else {
+	// 	        		$inputEmail.next('.error').html('Введите корректный E-mail!');
+	// 	        		error = true;
+	// 	        	}
+	// 				$inputEmail.addClass('borderRed');
+	// 			} else {
+	// 				$inputEmail.removeClass('borderRed');
+	// 			}
+	// 		}
 
 
-		    if(error) // if error is true;
-		    {
-		        return false; // stop the form from being submitted.
-		    }
+	// 	    if(error) // if error is true;
+	// 	    {
+	// 	        return false; // stop the form from being submitted.
+	// 	    }
 
-		});
+	// 	});
 
-		$('form').find('[req]').each(function(){
-			$(this).focus(function(){
-				$(this).next('.error').remove();
-				$(this).removeClass('borderRed');
-			});
-		});
-	})();
+	// 	$('form').find('[req]').each(function(){
+	// 		$(this).focus(function(){
+	// 			$(this).next('.error').remove();
+	// 			$(this).removeClass('borderRed');
+	// 		});
+	// 	});
+	// })();
 
-	$('form').find('input[name="phone"]').mask("+38(999)999-99-99");
+	// $('form').find('input[name="phone"]').mask("+38(999)999-99-99");
 	/* проверка заполнения полей формы */	
 
 	/*--------------------------------- функция для адаптивного меню -----------------------------*/

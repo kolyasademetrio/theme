@@ -46,7 +46,7 @@ get_header(); ?>
 function reload() {
     location = "<?php echo $ref_wp; ?>"
 };
-setTimeout('reload()', 5000);
+// setTimeout('reload()', 5000);
 </script>
 
 
