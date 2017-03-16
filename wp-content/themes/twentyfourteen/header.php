@@ -97,22 +97,20 @@
                                 <span class="glyphicon glyphicon-menu-hamburger"></span>
                                 <nav class="header__nav">
                                     <ul class="header__navList">
-									<?php
-										$menus = wp_get_nav_menus(array('hide_empty' => false, 'orderby' => 'name'));
-										$menu_list = wp_get_nav_menu_items('menu_header_main');
-											for ($i = 0; $i < count($menu_list); $i++) {
-									?>
+                    									<?php
+                    										$menus = wp_get_nav_menus(array('hide_empty' => false, 'orderby' => 'name'));
+                    										$menu_list = wp_get_nav_menu_items('menu_header_main');
+                    											for ($i = 0; $i < count($menu_list); $i++) {
+                    									?>
 
-										<li class="header__navItem">
+                    										<li class="header__navItem">
                                             <a href="<?php echo $menu_list[$i]->url; ?>" class="header__navLink" id="">
                                             	<?php echo $menu_list[$i]->title; ?>
                                             </a>
                                         </li>
-
-
-									<?php
-				            			}
-				    				?>
+                    									<?php
+                    				            }
+                    				    			?>
                                         <!-- <li class="header__navItem">
                                             <a href="#" class="header__navLink" id="">Главная</a>
                                         </li>
